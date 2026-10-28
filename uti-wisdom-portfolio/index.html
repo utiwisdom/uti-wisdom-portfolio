@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uti Wisdom | Data Engineer</title>
+<meta name="description" content="Uti Wisdom is a data engineer in Warri, Nigeria. Completed the ALX Data Engineering programme and built a deployed booking system on PostgreSQL.">
+<meta name="theme-color" content="#0b0b0c">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Uti Wisdom | Data Engineer">
+<meta property="og:description" content="Data engineer in Warri, Nigeria. Deployed booking system on PostgreSQL, ALX Data Engineering graduate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://utiwisdom.netlify.app/">
+<!-- Assumes your Netlify site name is utiwisdom. If you choose another name, change these 4 URLs. -->
+<meta property="og:image" content="https://utiwisdom.netlify.app/og.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Uti Wisdom | Data Engineer">
+<meta name="twitter:description" content="Data engineer in Warri, Nigeria. Deployed booking system on PostgreSQL, ALX Data Engineering graduate.">
+<meta name="twitter:url" content="https://utiwisdom.netlify.app/">
+<meta name="twitter:image" content="https://utiwisdom.netlify.app/og.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dc1f2e'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3EUW%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root{
+    --bg:#0b0b0c; --surface:#141416; --surface2:#1c1c1f; --line:#2c2c31;
+    --text:#f5f5f5; --muted:#b9b9bf;
+    --red:#dc1f2e; --red-hover:#f02a3a; --red-bright:#ff4955;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;font-size:1rem;
+  }
+  a{color:var(--red-bright);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+  a:hover{color:#fff}
+  ::selection{background:var(--red);color:#fff}
+  :focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:4px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 1.25rem}
+
+  /* Scroll progress */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--red),var(--red-bright));z-index:20}
+
+  /* Header */
+  header{background:rgba(11,11,12,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:10;border-bottom:2px solid var(--red)}
+  .bar{display:flex;align-items:center;justify-content:space-between;min-height:58px}
+  .brand{display:flex;align-items:center;gap:.65rem;color:#fff;text-decoration:none;font-weight:600}
+  .mark{
+    display:inline-grid;place-items:center;width:34px;height:34px;border-radius:8px;
+    background:var(--red);color:#fff;font-weight:800;font-size:.9rem;letter-spacing:.02em;
+  }
+  nav a{position:relative;color:#fff;text-decoration:none;margin-left:1.1rem;font-weight:600;font-size:.95rem;padding:.2rem 0;transition:color .3s}
+  nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--red);transition:width .3s ease}
+  nav a:hover::after,nav a[aria-current="true"]::after{width:100%}
+  nav a:hover,nav a[aria-current="true"]{color:var(--red-bright)}
+
+  /* Sections */
+  section{padding:2.25rem 0}
+  h1{font-size:clamp(2.4rem,9vw,3.8rem);line-height:1.05;margin:0 0 .35rem;font-weight:800;letter-spacing:-.02em;color:var(--red-bright)}
+  @supports (-webkit-background-clip:text) or (background-clip:text){
+    h1{background:linear-gradient(135deg,#ff4955 0%,#ffa3aa 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  }
+  @media (forced-colors:active){h1{background:none;-webkit-text-fill-color:currentColor}}
+  h2{font-size:1.5rem;margin:0 0 1.5rem;font-weight:800;letter-spacing:-.01em;text-align:center}
+  h2::after{content:"";display:block;width:70px;height:4px;background:var(--red);margin:.5rem auto 0;border-radius:2px}
+  .role{font-size:1.25rem;font-weight:800;color:var(--red-bright);margin:0 0 .75rem}
+  .lead{font-size:1.1rem;max-width:34rem;margin:0 auto 1.4rem;color:#e6e6e8}
+  .where{color:var(--muted);font-size:.95rem;margin:0 0 .5rem}
+
+  /* Hero */
+  .hero-bg{position:relative;overflow:hidden}
+  .hero-bg::before{content:"";position:absolute;width:520px;height:520px;top:-260px;right:-200px;border-radius:50%;background:radial-gradient(circle,rgba(220,31,46,.38) 0%,transparent 70%);animation:float 6s ease-in-out infinite;pointer-events:none}
+  .hero-bg>*{position:relative;z-index:1}
+  .hero{display:grid;justify-items:center;text-align:center;padding-top:2.5rem}
+  .photo-wrap{position:relative;width:150px;height:150px;border-radius:50%;display:grid;place-items:center;overflow:hidden;margin-bottom:1.25rem;animation:fadeIn 1s ease-in both}
+  .photo-wrap::before{content:"";position:absolute;inset:-50%;background:conic-gradient(var(--red),#000,var(--red-bright),#000,var(--red));animation:spin 6s linear infinite}
+  .photo{position:relative;width:calc(100% - 8px);height:calc(100% - 8px);border-radius:50%;object-fit:cover;background:var(--surface);display:block}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+  @keyframes fadeIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+  .btns{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.3rem;border-radius:8px;font-weight:800;text-decoration:none;
+    border:2px solid var(--red);min-height:44px;font:inherit;font-weight:800;cursor:pointer;
+    transition:transform .15s,background .2s,box-shadow .2s;
+  }
+  .btn:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(220,31,46,.4)}
+  .btn.primary{background:var(--red);color:#fff;box-shadow:0 6px 20px rgba(220,31,46,.35)}
+  .btn.primary:hover{background:var(--red-hover);color:#fff}
+  .btn.ghost{background:transparent;color:#fff}
+  .btn.ghost:hover{background:var(--red);color:#fff}
+
+  /* Stats */
+  .stats{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+  .stats li{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:10px;padding:.7rem .8rem}
+  .stats b{display:block;font-size:1.7rem;font-weight:800;line-height:1.1}
+  .stats span{color:var(--muted);font-size:.82rem;line-height:1.3;display:block}
+
+  /* Spotlight cards */
+  .spot{position:relative;background:var(--surface);border:1px solid var(--line);transition:transform .2s,border-color .2s,box-shadow .2s}
+  .spot::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,73,85,.18),transparent 70%)}
+  .spot:hover{transform:translateY(-4px);border-color:var(--red);box-shadow:0 10px 30px rgba(220,31,46,.2)}
+  .spot:hover::before{opacity:1}
+  .card.spot:hover{transform:translateY(-10px)}
+
+  /* Proof */
+  .wins{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+  .wins li{display:flex;gap:.9rem;align-items:flex-start;border-left:4px solid var(--red);border-radius:8px;padding:.8rem 1rem}
+  .ico{flex:none;width:40px;height:40px;padding:8px;border-radius:10px;background:rgba(220,31,46,.18);color:var(--red-bright);transition:background .3s,color .3s}
+  .spot:hover .ico{background:var(--red);color:#fff}
+  .wins strong{display:block}
+  .wins span{color:var(--muted);font-size:.95rem}
+
+  /* Skills */
+  .tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+  .tags li{background:var(--surface);border:1px solid var(--red);color:#fff;border-radius:999px;padding:.3rem .9rem;font-weight:600;font-size:.9rem;transition:background .2s,transform .15s}
+  .tags li:hover{background:var(--red);transform:translateY(-2px) scale(1.04)}
+
+  /* Projects */
+  .cards{display:grid;gap:1rem}
+  .card{border-radius:12px;padding:1.2rem}
+  .card h3{margin:0 0 .6rem;font-size:1.15rem}
+  .card dl{margin:0 0 .9rem}
+  .card dt{font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--red-bright);margin-top:.6rem}
+  .card dd{margin:.1rem 0 0}
+  .links{display:flex;flex-wrap:wrap;gap:1.1rem;font-weight:600}
+  .card .links a{color:var(--muted);transition:color .3s}
+  .card:hover .links a{color:var(--red-bright)}
+  .card .links a:hover{color:#fff}
+  .note{color:var(--muted);font-size:.9rem;margin:.6rem 0 0}
+  #projects>.note{text-align:center;margin-top:1.5rem}
+
+  /* Contact + footer */
+  .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+  .contact-list svg{width:20px;height:20px;flex:none}
+  #copy-status{text-align:center;color:var(--muted);font-size:.9rem;min-height:1.4em;margin:.75rem 0 0}
+  footer{border-top:2px solid var(--red);padding:1.25rem 0;margin-top:1.5rem;font-size:.9rem;color:var(--muted)}
+  footer .row{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;justify-content:space-between}
+
+  /* Reveal on scroll (only when JS is on) */
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media (min-width:700px){
+    .cards{grid-template-columns:1fr 1fr}
+    .photo-wrap{width:190px;height:190px}
+    section{padding:3rem 0}
+    .stats b{font-size:2rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before{transition:none!important;animation:none!important}
+    .js .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Uti Wisdom, back to top"><span class="mark" aria-hidden="true">UW</span>Uti Wisdom</a>
+    <nav aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero-bg">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="photo-wrap">
+        <img class="photo" src="wisdom.jpg" width="190" height="190" alt="Portrait of Uti Wisdom" fetchpriority="high">
+      </div>
+      <div>
+        <p class="where">Warri, Nigeria</p>
+        <h1 id="hero-title">Uti Wisdom</h1>
+        <p class="role">Data Engineer</p>
+        <p class="lead">I build reliable data systems, from relational schema to live API, and I deploy them.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn ghost" href="#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+    <div class="wrap">
+      <ul class="stats" aria-label="At a glance">
+        <li><b data-count="12">12</b><span>months, ALX Data Engineering programme</span></li>
+        <li><b data-count="2">2</b><span>ALX cohorts mentored</span></li>
+        <li><b data-count="22">22</b><span>public GitHub repositories</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="wrap reveal" aria-labelledby="about-title">
+    <h2 id="about-title">Proof</h2>
+    <ul class="wins">
+      <li class="spot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14.5L7 22l5-3 5 3-1.5-7.5"/></svg><div><strong>Completed the 12-month ALX Data Engineering programme (Aug 2026)</strong><span>Proves I finish long, structured technical training. <a href="https://ehub.alxafrica.com/certificates/verify/0cc651ef-625a-4648-9e64-172fae40a397" rel="noopener">Verify my certificate</a></span></div></li>
+      <li class="spot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.2c2.8.2 4.5 2.1 4.5 5"/></svg><div><strong>Volunteer mentor, two ALX cohorts (Machine Learning and Python)</strong><span>Proves I can explain technical work clearly. I also teach at secondary school.</span></div></li>
+      <li class="spot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/></svg><div><strong>Submitted to ALX × Data Community Africa Demo Day 2026</strong><span>Proves I put work in front of reviewers.</span></div></li>
+      <li class="spot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19c3-5 6-8 10-10"/></svg><div><strong>ND, Environmental Science and Management Technology, PTI</strong><span>A science background behind my data work.</span></div></li>
+    </ul>
+  </section>
+
+  <section class="wrap reveal" id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+    <ul class="tags">
+      <li>SQL</li><li>PostgreSQL</li><li>Python</li><li>Data modelling</li><li>APIs</li><li>Git</li><li>Deployment</li>
+    </ul>
+  </section>
+
+  <section class="wrap reveal" id="projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">Projects</h2>
+    <div class="cards">
+
+      <article class="card spot">
+        <h3>Wisdom Ventures Bike Rental</h3>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Booking systems break when two people reserve the same bike for overlapping times.</dd>
+          <dt>What I built</dt>
+          <dd>A deployed booking system: JavaScript front end, Node.js serverless API, PostgreSQL on Neon. It has a 3-table relational schema, a unique index that blocks double-booking, transactions with row locking, and parameterised SQL.</dd>
+        </dl>
+        <div class="links">
+          <a href="https://wisdom-ventures-bikes.netlify.app/" rel="noopener">Live site</a>
+          <a href="https://github.com/utiwisdom/wisdom-ventures" rel="noopener">Code</a>
+        </div>
+        <p class="note">Submitted to ALX × Data Community Africa Demo Day 2026.</p>
+      </article>
+
+      <article class="card spot">
+        <h3>Student Database: Bash ETL into PostgreSQL</h3>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Student and course data arrives as CSV files that must be cleaned before it can be queried reliably.</dd>
+          <dt>What I built</dt>
+          <dd>A Bash ETL script that reads the CSV data, removes duplicates, validates it, and loads it into a normalised 4-table PostgreSQL database.</dd>
+        </dl>
+        <div class="links">
+          <a href="https://github.com/utiwisdom/student-database-postgresql-bash" rel="noopener">Code</a>
+        </div>
+      </article>
+
+    </div>
+    <p class="note"><a href="https://github.com/utiwisdom?tab=repositories" rel="noopener">See all my repositories on GitHub</a></p>
+  </section>
+
+  <section class="wrap reveal" id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Let’s connect</h2>
+    <ul class="contact-list">
+      <li>
+        <button type="button" class="btn primary" id="copy-email" data-email="wisdomuti8@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
+          Copy my email
+        </button>
+      </li>
+      <li><a class="btn ghost" href="mailto:wisdomuti8@gmail.com">Send an email</a></li>
+      <li><a class="btn ghost" href="https://www.linkedin.com/in/uti-wisdom-286602228/" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9.75h4V21H3zM9.75 9.75h3.8v1.54h.05c.53-1 1.82-2.06 3.75-2.06 4 0 4.75 2.63 4.75 6.05V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.58V21h-4z"/></svg>LinkedIn</a></li>
+      <li><a class="btn ghost" href="https://github.com/utiwisdom" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></li>
+    </ul>
+    <p id="copy-status" role="status" aria-live="polite"></p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>© <span id="year">2026</span> Uti Wisdom · Warri, Nigeria</span>
+    <a href="https://github.com/utiwisdom" rel="noopener">github.com/utiwisdom</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll progress bar
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  // Active nav link (scroll-spy)
+  var links = document.querySelectorAll('nav a');
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          links.forEach(function(a){ a.removeAttribute('aria-current'); });
+          var a = document.querySelector('nav a[href="#' + e.target.id + '"]');
+          if (a) a.setAttribute('aria-current','true');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    ['projects','skills','contact'].forEach(function(id){
+      var s = document.getElementById(id); if (s) spy.observe(s);
+    });
+  }
+
+  // Count-up numbers
+  var nums = document.querySelectorAll('[data-count]');
+  function run(el){
+    var end = +el.dataset.count, start = performance.now(), dur = 1200;
+    function tick(t){
+      var p = Math.min((t - start) / dur, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ run(e.target); co.unobserve(e.target); } });
+    }, {threshold:0.6});
+    nums.forEach(function(n){ n.textContent = '0'; co.observe(n); });
+  }
+
+  // Cursor spotlight on cards
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.spot').forEach(function(el){
+      el.addEventListener('pointermove', function(e){
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  // Copy email
+  var btn = document.getElementById('copy-email');
+  var status = document.getElementById('copy-status');
+  btn.addEventListener('click', function(){
+    var email = btn.dataset.email;
+    function done(ok){ status.textContent = ok ? 'Copied: ' + email : 'Copy failed. My email is ' + email; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function(){ done(true); }, function(){ done(false); });
+    } else { done(false); }
+  });
+})();
+</script>
+</body>
+</html>
